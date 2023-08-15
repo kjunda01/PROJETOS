@@ -1,2 +1,2 @@
-# PROJETOS
-Repositório para estudos, testes e afins.
+# Repositório para estudos, testes e afins.
+
