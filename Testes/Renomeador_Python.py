@@ -10,9 +10,13 @@ import os
 import shutil
 
 # 2 - Copiar o "É NOTÍCIA - MODELO.cdr" para o diretorio atual
+
+
 def copiar_enoticia():
-    noticia = "/home/kjunda01/OneDrive 2s1xlx/SEMED 2020/COMUNICAÇÃO PREFEITURA/Publicações/Modelo para publicação/Modelo/É NOTÍCIA - MODELO.cdr" # Localização real do arquivo modelo
-    modelo = "É NOTÍCIA - MODELO.cdr" # Nome do arquivo .cdr para fazer a cópia e checagem
+    # Localização real do arquivo modelo
+    noticia = "/home/kjunda01/OneDrive 2s1xlx/SEMED 2020/COMUNICAÇÃO PREFEITURA/Publicações/Modelo para publicação/Modelo/É NOTÍCIA - MODELO.cdr"
+    # Nome do arquivo .cdr para fazer a cópia e checagem
+    modelo = "É NOTÍCIA - MODELO.cdr"
     pasta = os.getcwd()
     caminho_final_modelo = os.path.join(pasta, modelo)
 
@@ -24,6 +28,8 @@ def copiar_enoticia():
         print('\nCópia concluída com sucesso.\n')
 
 # 3 - Renomear o "É NOTÍCIA - MODELO.cdr" para os 30 primeiros caracteres do caminho final modelo
+
+
 def renomear_enoticia():
     pasta = os.getcwd()
     print('Renomeando arquivo ".cdr" para o nome da pasta atual.....\n')
@@ -33,8 +39,10 @@ def renomear_enoticia():
     # /home/kjunda01/Desktop/PROJETOS/Testes/
     os.rename(caminho_antigo, caminho_novo)
 
+
 # 4 - Listar zips
-zips = [arq for arq in os.listdir(os.getcwd()) if os.path.isfile(os.path.join(os.getcwd(), arq)) and arq.endswith(".zip")]
+zips = [arq for arq in os.listdir(os.getcwd()) if os.path.isfile(
+    os.path.join(os.getcwd(), arq)) and arq.endswith(".zip")]
 
 # 5 - Extrair zips
 # for zip_file in listar_zips():
