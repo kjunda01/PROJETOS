@@ -1,40 +1,44 @@
 import os
-import os.path
-from pathlib import PurePath
 import shutil
 import glob
 
-enoticia = '/home/kjunda01/Downloads/É NOTÍCIA - MODELO.cdr'
+
 diretorio_padrao = os.getcwd()
-# COPIAR O ARQUIVO .CDR FEITO E OK
 
+def copiar_cdr():
+    # COPIAR O ARQUIVO .CDR FEITO E OK
+    enoticia = '/home/kjunda01/Downloads/É NOTÍCIA - MODELO.cdr'
+    verificar_cdr = glob.glob('*.cdr')
+    if not verificar_cdr:
+        shutil.copy2(enoticia, diretorio_padrao)
+    else:
+        print('\nArquivo .cdr já está na pasta. Pulando etapa...\n')
 
-# if os.path.isfile(shutil.copy2(enoticia, diretorio_padrao)):
-#     print(
-#         f'\nArquivo "{shutil.copy2(enoticia, diretorio_padrao)[-22:]}" já está na pasta {diretorio_padrao[diretorio_padrao.rfind("/"):]}')
-#     print(f'{diretorio_padrao}')
-#     print('Pulando etapa...\n')
-# else:
-#     print('Copiando....')
+def renomear_cdr():
+    # Detectar quantos arquivos cdr estão no diretorio padrão
+    achar_cdr = glob.glob('*.cdr')
 
+    contador = ''
 
-# Detectar quantos arquivos cdr estão no diretorio padrão
-achar_cdr = glob.glob('*.cdr')
+    for cdrs in achar_cdr:
+        # Acha qual o antigo nome do cdr
+        antigo_nome_cdr = os.path.join(diretorio_padrao, cdrs)
 
-contador = 1
+        # Acha qual o nome da pasta atual, somente ela.
+        pasta_local = diretorio_padrao.split("/")[-1]
 
-for cdrs in achar_cdr:
-    print(cdrs)
-    print(diretorio_padrao)
+        # Acha o nome do arquivo considerando apenas os 30 caracteres da pasta
+        nome_30 = os.path.join(
+            'É NOTÍCIA - ' + pasta_local[0:30] + contador + '.cdr')
 
-    # print(novo_nome_cdrs)
-    # direct = os.path.basename(os.path.dirname(diretorio_padrao))
-    # print(direct)
-    # antigo_nome_cdrs = diretorio_padrao + '/' + cdrs
-    # print(antigo_nome_cdrs)
-    # # print(nome_antigo_cdrs)
+        # Define como vai ser o novo nome do arquivo cdr
+        novo_nome_cdr = os.path.join(diretorio_padrao, nome_30)
 
-    # print(novo_nome_cdrs)
+        # Renomeia os arquivos para o novo nome
+        os.rename(antigo_nome_cdr, novo_nome_cdr)
 
-    # nome_novo_cdrs = os.rename(nome_antigo_cdrs, diretorio_padrao.removeprefix(diretorio_padrao)+'.cdr')
-    # print(nome_novo_cdrs)
+        # Variavel para somar uma letra ao final, para conseguir renomear varios arquivos.
+        contador += '-'
+
+copiar_cdr()
+renomear_cdr()
