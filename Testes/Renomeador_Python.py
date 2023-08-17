@@ -9,12 +9,11 @@
 import os
 import shutil
 
+
 # 2 - Copiar o "É NOTÍCIA - MODELO.cdr" para o diretorio atual
-
-
 def copiar_enoticia():
     # Localização real do arquivo modelo
-    noticia = "/home/kjunda01/OneDrive 2s1xlx/SEMED 2020/COMUNICAÇÃO PREFEITURA/Publicações/Modelo para publicação/Modelo/É NOTÍCIA - MODELO.cdr"
+    noticia = "/home/kjunda01/Downloads/É NOTÍCIA - MODELO.cdr"
     # Nome do arquivo .cdr para fazer a cópia e checagem
     modelo = "É NOTÍCIA - MODELO.cdr"
     pasta = os.getcwd()
@@ -27,8 +26,8 @@ def copiar_enoticia():
         shutil.copy2(noticia, pasta)
         print('\nCópia concluída com sucesso.\n')
 
-# 3 - Renomear o "É NOTÍCIA - MODELO.cdr" para os 30 primeiros caracteres do caminho final modelo
 
+# 3 - Renomear o "É NOTÍCIA - MODELO.cdr" para os 30 primeiros caracteres do caminho final modelo
 
 def renomear_enoticia():
     pasta = os.getcwd()
@@ -51,5 +50,7 @@ zips = [arq for arq in os.listdir(os.getcwd()) if os.path.isfile(
 #     print('Arquivo ".zip" extraído com sucesso.\n')
 
 copiar_enoticia()
+
 renomear_enoticia()
+
 print(zips)

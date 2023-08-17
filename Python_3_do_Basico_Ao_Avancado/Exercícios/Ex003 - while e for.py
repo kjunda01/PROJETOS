@@ -63,8 +63,9 @@ while True:
         print('Estado civil errado. Tente novamente.')
 
 
-print(f'Nome: {nome}\n'
+print(f'\n*** Dados do usuário ***\n'
+      f'Nome: {nome}\n'
       f'Idade: {idade}\n'
       f'Salário: R${salario}\n'
-      f'Gênero: {genero}\n'
-      f'Estado Civil: {estado_civil}\n')
+      f'Gênero: {genero[0]}\n'
+      f'Estado Civil: {estado_civil[0]}\n')
