@@ -45,6 +45,7 @@ def renomear_cdr():
 
 
 def nomes_dos_arquivos():
+    contador = 1
     # Verificar os arquivos dentro da pasta em que o script está rodando
     for arquivos in glob.glob('*'):
 
@@ -63,15 +64,18 @@ def nomes_dos_arquivos():
         # Checar se o nome já tem a extensão
         if extensao in arquivos_pasta_local[0:30]:
             # se já tiver não fará nada
-            print(os.path.join(diretorio, arquivos_pasta_local[0:30]))
+            arquivo_30 = os.path.join(diretorio, arquivos_pasta_local[0:30])
+
+            print(f'É NOTÍCIA - {arquivos_pasta_local[:30]}')
         else:
             # Se não tiver vai acrescentar a extensão ao arquivo
             adicionar_extensao = arquivos_pasta_local[:30] + extensao
-            novo_arquivo_30 = os.path.join(diretorio, adicionar_extensao)
-            print(novo_arquivo_30)
+            arquivo_extensao_30 = os.path.join(diretorio, adicionar_extensao)
+
+            print(f'É NOTÍCIA - {arquivos_pasta_local[:30]} - "{contador}"{extensao}')
+            contador += 1
 
 
-copiar_cdr()
-renomear_cdr()
+# copiar_cdr()
+# renomear_cdr()
 nomes_dos_arquivos()
-
