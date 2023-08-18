@@ -31,8 +31,7 @@ def renomear_cdr():
         pasta_local = diretorio_padrao.split("/")[-1]
 
         # Acha o nome do arquivo considerando apenas os 30 caracteres da pasta
-        nome_30 = os.path.join(
-            'É NOTÍCIA - ' + pasta_local[0:30] + contador + '.cdr')
+        nome_30 = os.path.join('É NOTÍCIA - ' + pasta_local[0:30] + contador + '.cdr')
 
         # Define como vai ser o novo nome do arquivo cdr
         novo_nome_cdr = os.path.join(diretorio_padrao, nome_30)
@@ -65,17 +64,44 @@ def nomes_dos_arquivos():
         if extensao in arquivos_pasta_local[0:30]:
             # se já tiver não fará nada
             arquivo_30 = os.path.join(diretorio, arquivos_pasta_local[0:30])
-
             print(f'É NOTÍCIA - {arquivos_pasta_local[:30]}')
         else:
             # Se não tiver vai acrescentar a extensão ao arquivo
             adicionar_extensao = arquivos_pasta_local[:30] + extensao
             arquivo_extensao_30 = os.path.join(diretorio, adicionar_extensao)
 
-            print(f'É NOTÍCIA - {arquivos_pasta_local[:30]} - "{contador}"{extensao}')
+            print(f'É NOTÍCIA - {arquivos_pasta_local[:30]} - [{contador}]{extensao}')
             contador += 1
 
 
-# copiar_cdr()
-# renomear_cdr()
-nomes_dos_arquivos()
+def renomear_jpeg():
+    # Detectar quantos arquivos cdr estão no diretorio padrão
+    achar_jpeg = glob.glob('*.jpeg')
+
+    # Variável para acrescentar um contador
+    contador = ''
+
+    for jpeg in achar_jpeg:
+        # Acha qual o antigo nome do jpeg
+        antigo_nome_jpeg = os.path.join(diretorio_padrao, jpeg)
+
+        # Acha qual o nome da pasta atual, somente ela.
+        pasta_local = diretorio_padrao.split("/")[-1]
+
+        # Acha o nome do arquivo considerando apenas os 30 caracteres da pasta
+        nome_30 = os.path.join('É NOTÍCIA - ' + pasta_local[0:30] + contador + '.jpeg')
+
+        # Define como vai ser o novo nome do arquivo jpeg
+        novo_nome_jpeg = os.path.join(diretorio_padrao, nome_30)
+
+        # Renomeia os arquivos para o novo nome
+        os.rename(antigo_nome_jpeg, novo_nome_jpeg)
+
+        # Variavel para somar uma letra ao final, para conseguir renomear varios arquivos.
+        contador += '-'
+
+
+copiar_cdr()
+renomear_cdr()
+renomear_jpeg()
+# nomes_dos_arquivos()
