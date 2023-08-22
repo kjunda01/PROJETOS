@@ -5,26 +5,27 @@ import glob
 
 # VARIÁVEIS INICIAIS
 main_folder_path = os.getcwd()
-main_folder_only = main_folder_path.split('/')[-1]
+main_folder_only = os.getcwd().split('/')[-1]
 
 
 # ********** COMEÇO DO PROGRAMA **********
 
 # EXTRAIR OS ARQUIVOS ZIP
-print('Extraindo arquivos .zip..')
-zip_list = glob.glob('*.zip')
-for zips in zip_list:
-    shutil.unpack_archive(zips)
-    print(f'Arquivo "{zips}" extraído com sucesso.')
+def zip_extract():
+    print('Extraindo arquivos .zip..')
+    zip_list = glob.glob('*.zip')
+    for zips in zip_list:
+        shutil.unpack_archive(zips)
+        print(f'Arquivo "{zips}" extraído com sucesso.')
 
 
 # COPIAR O É NOTICIA PARA O WORKING DIRECTORY
+def copy_cdr():
+    e_noticia_folder = '/home/kjunda01/Downloads/É NOTÍCIA - MODELO.cdr'
+    print(f'Copiando arquivo "{e_noticia_folder.split("/")[-1]}" para a pasta "{main_folder_only}".')
+    shutil.copy2(e_noticia_folder, main_folder_path)
 
-e_noticia_folder = '/home/kjunda01/Downloads/É NOTÍCIA - MODELO.cdr'
-print(f'Copiando arquivo "{e_noticia_folder.split("/")[-1]}" para a pasta "{main_folder_only}".')
-shutil.copy2(e_noticia_folder, main_folder_path)
-
-
+# FUNÇÕES DE RENOMEAR ARQUIVOS
 def rename_cdr():
     dir_list = glob.glob('*')
     counter_cdr = 1
@@ -74,7 +75,8 @@ def rename_zip():
             print(f'"{files}" ----> "{new_name_only_zip}".')
             counter_zip += 1
 
-
+copy_cdr()
+zip_extract()
 rename_cdr()
 rename_jpeg()
 rename_zip()
