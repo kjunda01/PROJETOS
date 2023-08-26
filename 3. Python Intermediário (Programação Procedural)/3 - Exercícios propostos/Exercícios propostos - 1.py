@@ -7,10 +7,10 @@ from getpass import getuser
 usuario = getuser()
 
 
-def saudacao(saudacao='Olá', nome=usuario):
+def saudacao(saudacao, nome):
     print('Testando...')
-    print(saudacao, nome)
+    print(f'{saudacao}, {nome}')
 
-
-saudacao()
-
+saudacao('', '' )
+saudacao('Olá', usuario)
+saudacao('Opa', 'Kjunda' )

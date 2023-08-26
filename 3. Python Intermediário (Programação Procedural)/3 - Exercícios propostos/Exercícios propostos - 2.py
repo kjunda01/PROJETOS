@@ -4,12 +4,11 @@
 
 from getpass import getuser
 
-def somaTotal(num1=4, num2=5, num3=11):
-    soma = num1 + num2 + num3
-    print()
-    print(soma)
-    print()
+def somaTotal(num1, num2, num3):
+    print(num1 + num2 + num3)
 
 
-
-somaTotal()
+somaTotal(2,5,9)
+somaTotal(4,5,11)
+somaTotal(1,1,1)
+somaTotal(9,9,9)
