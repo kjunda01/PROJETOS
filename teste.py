@@ -1,20 +1,11 @@
-import tkinter as tk
-from PIL import Image, ImageTk
-import urllib.request
-from io import BytesIO
+import flet as ft
+from flet import IconButton, Page, Row, TextField, icons, Text
 
-root = tk.Tk()
-URL = "https://cdn-icons-png.flaticon.com/512/27/27223.png"
-u = urllib.request.urlopen(URL)
-raw_data = u.read()
-u.close()
+def main(page= ft.Page):
+    page.title = "Mp3 Music Player"
+    page.vertical_alignment = "center"
+    page.update()
 
-im = Image.open(BytesIO(raw_data))
-im = im.resize((256,256),Image.ANTIALIAS)
-photo = ImageTk.PhotoImage(im)
-
-button = tk.Button(image=photo,width=256,height=256,compound="c")
-button.image = photo
-button.pack()
-
-root.mainloop()
+    escolher_musica = Text()
+    
+ft.app(target=main, view=ft.AppView.FLET_APP)
