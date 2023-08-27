@@ -1,5 +1,6 @@
 from tkinter import PhotoImage, filedialog
 import pygame
+from pygame import *
 import customtkinter as ctk
 
 pygame.mixer.init()
